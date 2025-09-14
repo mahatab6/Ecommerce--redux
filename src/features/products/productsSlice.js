@@ -21,6 +21,13 @@ export const deleteProducts = createAsyncThunk ('products/deleteProducts',
     }
 )
 
+export const createProducts = createAsyncThunk ('products/CreateProducts', 
+    async (product) => {
+        const res = await axios.post('http://localhost:3005/products', product);
+        return res.data;
+    }
+)
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -40,6 +47,9 @@ export const productsSlice = createSlice({
     })
     .addCase(deleteProducts.fulfilled, (state, action) => {
         state.products = state.products.filter((product) => product.id !== action.payload)
+    })
+    .addCase(createProducts.fulfilled, (state, action) => {
+        state.products.push(action.payload)
     })
   }
 

@@ -65,6 +65,18 @@
       "name": "Tablet Mahatab",
       "price": 350,
       "category": "Electronics"
+    },
+    {
+      "id": "c3lLooP8RWQMiogQl3h1U",
+      "name": "Iced Americano",
+      "price": 520,
+      "category": "Hot"
+    },
+    {
+      "id": "TeV48eSPgbkI1REueY26E",
+      "name": "Keybord",
+      "price": 20,
+      "category": "technology"
     }
   ]
 }
