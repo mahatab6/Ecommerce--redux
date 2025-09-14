@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "./productsSlice";
+import { deleteProducts, fetchProducts } from "./productsSlice";
 import Loading from "../../pages/Loading";
 import ErrorPage from "../../pages/ErrorPage";
 
@@ -10,7 +10,6 @@ export default function ProductsView() {
   );
   const dispatch = useDispatch();
 
-  console.log(products);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -39,7 +38,7 @@ export default function ProductsView() {
             <p className="text-blue-600 font-semibold">${item.price}</p>
             <div className="card-actions justify-end">
               <button className="btn btn-primary btn-sm">Buy Now</button>
-              <button className="btn btn-outline btn-sm">Details</button>
+              <button onClick={() => dispatch(deleteProducts(item.id))} className="btn btn-outline btn-sm">Delete</button>
             </div>
           </div>
         </div>

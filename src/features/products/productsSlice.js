@@ -14,6 +14,13 @@ export const fetchProducts = createAsyncThunk ('products/fetchProducts',
     }
 )
 
+export const deleteProducts = createAsyncThunk ('products/deleteProducts', 
+    async (id) => {
+        const res = await axios.delete(`http://localhost:3005/products/${id}`);
+        return id;
+    }
+)
+
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
@@ -30,6 +37,9 @@ export const productsSlice = createSlice({
     })
     .addCase(fetchProducts.rejected, (state, action) => {
         state.error = "Failed to fetch data" || action.error.message
+    })
+    .addCase(deleteProducts.fulfilled, (state, action) => {
+        state.products = state.products.filter((product) => product.id !== action.payload)
     })
   }
 
